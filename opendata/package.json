@@ -1,0 +1,17 @@
+{
+  "name": "opendata",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "keywords": [
+    "opendata",
+    "data",
+    "api",
+    "death"
+  ],
+  "author": "Daniel Kagemann",
+  "license": "do-whatever-you-want",
+  "description": ""
+}
