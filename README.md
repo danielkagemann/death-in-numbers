@@ -33,6 +33,6 @@ Open the location `http://localhost:3000` in the browser.
 ### todos
 
 - ascii skull as welcome screen
-- filter bar
-- world map
-- lots of filter routines
+- ~~filter bar~~
+- ~~world map~~
+- ~~lots of filter routines~~

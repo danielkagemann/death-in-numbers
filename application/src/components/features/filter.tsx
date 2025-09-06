@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import { Checkbox } from "../ui/checkbox";
 import { Label } from "../ui/label";
@@ -29,13 +30,21 @@ export const Filter = ({ configure, filters, onChange }: Props) => {
       onChange("countries", newCountries);
    };
 
+   const onSelectAll = (all: boolean) => () => {
+      if (all) {
+         onChange("countries", [...configure.countries]);
+      } else {
+         onChange("countries", []);
+      }
+   };
+
    return (
-      <Card className="gap-1 py-4 absolute top-16 right-4 z-10">
-         <CardContent>
+      <Card className="gap-1 py-4 absolute top-16 bottom-4 right-4 z-10 w-60">
+         <CardContent className="overflow-auto">
             <div className="flex flex-col gap-1 text-xs">
                <strong>year</strong>
                <Select value={filters.year} onValueChange={onYearChange}>
-                  <SelectTrigger className="w-[180px]">
+                  <SelectTrigger className="w-full">
                      <SelectValue placeholder="Year" />
                   </SelectTrigger>
                   <SelectContent>
@@ -47,14 +56,22 @@ export const Filter = ({ configure, filters, onChange }: Props) => {
                   </SelectContent>
                </Select>
 
+               <div className="my-2 -ml-6 bg-gray-300 h-[1px] w-[calc(100%+4rem)]" />
+
                <strong>countries</strong>
+               <div className="flex gap-1 justify-between">
+                  <Button variant="outline" size="sm" className="cursor-pointer" onClick={onSelectAll(true)}>select all</Button>
+                  <Button variant="outline" size="sm" className="cursor-pointer" onClick={onSelectAll(false)}>select none</Button>
+               </div>
                {
                   configure.countries.toSorted().map((country: string) => (
                      <div className="flex items-center space-x-2" key={country}>
                         <Checkbox id={country}
+                           className="cursor-pointer"
                            checked={filters.countries.includes(country)}
                            onCheckedChange={() => onCountryChange(country)} />
-                        <Label htmlFor={country}>
+                        <Label htmlFor={country}
+                           className="cursor-pointer w-full">
                            {country}
                         </Label>
                      </div>
@@ -62,6 +79,6 @@ export const Filter = ({ configure, filters, onChange }: Props) => {
                }
             </div>
          </CardContent>
-      </Card>
+      </Card >
    );
 }
