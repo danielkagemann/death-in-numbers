@@ -1,0 +1,11 @@
+{
+  "name": "who",
+  "version": "1.0.0",
+  "description": "convert WHO csv data to json",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "daniel kagemann",
+  "license": "do-what-you-want"
+}
