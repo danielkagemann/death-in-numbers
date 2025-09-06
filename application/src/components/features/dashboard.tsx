@@ -23,10 +23,12 @@ export const Dashboard = () => {
       if ($db.initialized) {
          setYear($db.getYears()[0] ?? '');
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [$db.initialized]);
 
    useEffect(() => {
       setCountries(countryData.map(f => f.name));
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [year]);
 
    const countryData = useMemo(() => {

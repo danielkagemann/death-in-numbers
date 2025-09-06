@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-type Regions = Record<string, string[]>;
 type DeathItem = Record<string, number>;
 type GenderData = Record<string, DeathItem>;
 type YearData = Record<string, GenderData>;
@@ -24,7 +23,7 @@ export const useDatabase = () => {
    * listen for database.json and load it once
    */
   useEffect(() => {
-    fetch("/database.json")
+    fetch(`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/database.json`)
       .then((response) => response.json())
       .then((data) => {
         setJson(data);
